@@ -1,0 +1,10 @@
+**/node_modules/**
+**/dist/**
+**/build/**
+**/coverage/**
+**/temp/**
+**/temp-*
+**/temp-*/
+**/temp-*/
+**/temp-*/
+**/.cache/**
