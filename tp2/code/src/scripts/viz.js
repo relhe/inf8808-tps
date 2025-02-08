@@ -78,6 +78,12 @@ export function drawBars(y, xSubgroup, players, height, color, tip) {
     .attr('width', xSubgroup.bandwidth())
     .attr('height', (d) => height - y(d.Count))
     .attr('fill', (d) => color(d.Player))
-    .on('mouseover', tip.show)
+    .on('mouseover', function (_, d) {
+      tip.show({
+        group: `Act ${d3.select(this.parentNode).datum().Act}`,
+        player: d.Player,
+        lines: d.Count,
+      }, this);
+    })
     .on('mouseout', tip.hide);
 }
