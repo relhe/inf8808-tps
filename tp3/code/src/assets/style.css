@@ -1,5 +1,4 @@
 body {
-    font-family: 'Roboto Slab', 'sans-serif';
     font-size: 16px;
     background-color: #fff;
     color: #2A2B2E;
@@ -23,7 +22,6 @@ main {
 
 h1 {
     color: #2A2B2E;
-    font-family: 'Roboto Slab', 'serif';
     font-size: 56px;
     margin: 0;
     font-weight: normal;
@@ -31,7 +29,6 @@ h1 {
 
 h2 {
     color: #2A2B2E;
-    font-family: 'Roboto Slab', 'serif';
     font-weight: normal;
 }
 
@@ -51,18 +48,20 @@ button {
     font-size: 16px;
 }
 
-button:hover, button:active {
-	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-	background-color:#f6f6f6;
+button:hover,
+button:active {
+    background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+    background-color: #f6f6f6;
 }
 
-.title, .axis-text {
+.title,
+.axis-text {
     transform-origin: center;
     transform-box: fill-box;
     text-anchor: middle;
 }
 
-.viz-container{
+.viz-container {
     height: 100%;
     padding: 0 100px;
 }
@@ -75,21 +74,18 @@ button:hover, button:active {
     align-items: center;
 }
 
-.tick line{
+.tick line {
     visibility: hidden;
-  }
+}
 
-  .info {
-      pointer-events: none;
-      font-family: 'Roboto';
-  }
+.info {
+    pointer-events: none;
+}
 
-  .axis text {
-      font-family: 'Roboto';
-      cursor: default;
-      
-  }
+.axis text {
+    cursor: default;
+}
 
-  .axis path {
-      opacity: 0;
-  }
+.axis path {
+    opacity: 0;
+}
