@@ -9,10 +9,12 @@ export function positionLabels(g, width, height) {
 }
 
 export function drawCircles(data, rScale, colorScale, xScale, yScale, tip) {
-  d3.select('#graph-g').selectAll('circle')
+  // Select only circles with the class 'graph-circle'
+  d3.select('#graph-g').selectAll('circle.graph-circle')
     .data(data, d => d['Country Name'])
     .join(
       enter => enter.append('circle')
+        .attr('class', 'graph-circle') // Add a class to distinguish graph circles
         .attr('r', d => rScale(d.Population))
         .attr('fill', d => colorScale(d.Continent))
         .attr('fill-opacity', 0.7)
@@ -24,7 +26,7 @@ export function drawCircles(data, rScale, colorScale, xScale, yScale, tip) {
 }
 
 export function setCircleHoverHandler(tip) {
-  d3.selectAll('circle')
+  d3.select('#graph-g').selectAll('circle.graph-circle')
     .on('mouseover', function(event, d) {
       tip.show(d, this);
       d3.select(this).attr('fill-opacity', 1);
@@ -36,7 +38,7 @@ export function setCircleHoverHandler(tip) {
 }
 
 export function moveCircles(xScale, yScale, transitionDuration) {
-  d3.selectAll('circle')
+  d3.select('#graph-g').selectAll('circle.graph-circle')
     .transition()
     .duration(transitionDuration)
     .attr('cx', d => xScale(d.GDP))
