@@ -1,13 +1,17 @@
-import d3Legend from 'd3-svg-legend'
 
-/**
- * Draws the legend.
- *
- * @param {*} colorScale The color scale to use
- * @param {*} g The d3 Selection of the graph's g SVG element
- * @param {number} width The width of the graph, used to place the legend
- */
-export function drawLegend (colorScale, g, width) {
-  // TODO : Draw the legend using d3Legend
-  // For help, see : https://d3-legend.susielu.com/
+import * as d3 from 'd3';
+import d3Legend from 'd3-svg-legend';
+
+export function drawLegend(colorScale, g, width) {
+  const legend = d3Legend.legendColor()
+    .scale(colorScale)
+    .shape('circle')
+    .shapePadding(10)
+    .labelAlign('start')
+    .orient('vertical')
+    .labels(colorScale.domain().sort());
+
+  g.append('g')
+    .attr('transform', `translate(${width - 150}, 20)`)
+    .call(legend);
 }

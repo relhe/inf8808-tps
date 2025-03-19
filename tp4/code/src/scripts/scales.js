@@ -1,53 +1,33 @@
-/**
- * Defines the scale to use for the circle markers' radius.
- *
- * The radius of the circle is linearly proportinal to the population of the given country.
- *
- * The radius is a value defined in the interval [5, 20].
- *
- * @param {object} data The data to be displayed
- * @returns {*} The linear scale used to determine the radius
- */
-export function setRadiusScale (data) {
-  // TODO : Set scale
-  return {}
+import * as d3 from 'd3';
+
+export function setRadiusScale(data) {
+  const allPopulations = [...data['2000'], ...data['2015']].map(d => d.Population);
+  return d3.scaleLinear()
+    .domain(d3.extent(allPopulations))
+    .range([5, 20]);
 }
 
-/**
- * Defines the color scale used to determine the color of the circle markers.
- *
- * The color of each circle is determined based on the continent of the country it represents.
- *
- * The possible colors are determined by the scheme d3.schemeSet1.
- *
- * @param {object} data The data to be displayed
- * @returns {*} The ordinal scale used to determine the color
- */
-export function setColorScale (data) {
-  // TODO : Set scale
-  return {}
+export function setColorScale(data) {
+  const continents = Array.from(new Set(
+    [...data['2000'], ...data['2015']].map(d => d.Continent)
+  ));
+  return d3.scaleOrdinal()
+    .domain(continents.sort())
+    .range(d3.schemeSet1);
 }
 
-/**
- * Defines the log scale used to position the center of the circles in X.
- *
- * @param {number} width The width of the graph
- * @param {object} data The data to be used
- * @returns {*} The linear scale in X
- */
-export function setXScale (width, data) {
-  // TODO : Set scale
-  return {}
+export function setXScale(width, data) {
+  const allGDP = [...data['2000'], ...data['2015']].map(d => d.GDP);
+  return d3.scaleLog()
+    .domain(d3.extent(allGDP))
+    .range([0, width])
+    .nice();
 }
 
-/**
- * Defines the log scale used to position the center of the circles in Y.
- *
- * @param {number} height The height of the graph
- * @param {object} data The data to be used
- * @returns {*} The linear scale in Y
- */
-export function setYScale (height, data) {
-  // TODO : Set scale
-  return {}
+export function setYScale(height, data) {
+  const allCO2 = [...data['2000'], ...data['2015']].map(d => d.CO2);
+  return d3.scaleLog()
+    .domain(d3.extent(allCO2))
+    .range([height, 0])
+    .nice();
 }

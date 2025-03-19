@@ -1,12 +1,12 @@
-/**
- * Defines the contents of the tooltip. See CSS for tooltip styling. The tooltip
- * features the country name, population, GDP, and CO2 emissions, preceded
- * by a label and followed by units where applicable.
- *
- * @param {object} d The data associated to the hovered element
- * @returns {string} The tooltip contents
- */
-export function getContents (d) {
-  // TODO : Generate tooltip contents
-  return ''
+import * as d3 from 'd3';
+
+export function getContents(d) {
+  return `
+    <div class="tooltip-content">
+      <strong>Country:</strong> ${d['Country Name']}<br/>
+      <strong>Population:</strong> ${d3.format(',')(d.Population)}<br/>
+      <strong>GDP:</strong> ${d3.format('$.2f')(d.GDP)} (USD)<br/>
+      <strong>CO2 emissions:</strong> ${d3.format('.2f')(d.CO2)} metric tonnes
+    </div>
+  `;
 }
