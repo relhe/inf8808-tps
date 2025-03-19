@@ -24,7 +24,8 @@
     "eslint-plugin-jsdoc": "^29.1.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.1",
+    "parcel-reporter-static-files-copy": "^1.5.3"
   },
   "staticFiles": {
     "staticPath": [
